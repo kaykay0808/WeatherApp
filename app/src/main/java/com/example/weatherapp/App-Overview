@@ -4,3 +4,6 @@ Weather App
 - Save and delete city to favorite
 - Settings change (Unit change of measurement) and save settings
 - Creating "about" Screen
+
+Api key:
+    https://api.openweathermap.org/data/2.5/forecast/daily?q=lisbon&appid=ed60fcfbd110ee65c7150605ea8aceea&units=imperial

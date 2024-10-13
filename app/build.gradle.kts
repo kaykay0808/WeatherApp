@@ -88,6 +88,13 @@ dependencies {
     // Icon extended
     implementation(libs.androidx.material.icons.extended)
 
+    // coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.play.services)
+    // coroutine lifecycle scopes
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -95,22 +102,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-
-
-    // coroutines
-    val coroutinesVersion = "1.7.3" // 1.5.2 in course
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.coroutines.play.services)
-    // coroutine lifecycle scopes
-    // implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
-    implementation(libs.androidx.lifecycle.viewmodel.ktx) //2.4.0
-
-    // material icons
-    // implementation("androidx.compose.material:material-icons-extended:1.5.4")
-
-
-
 
 }
