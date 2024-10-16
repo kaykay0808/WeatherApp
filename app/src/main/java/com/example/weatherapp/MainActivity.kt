@@ -39,7 +39,6 @@ fun WeatherApp() {
             color = MaterialTheme.colorScheme.background
         ) {
             Column(
-                // går nedover og objektene er klistret til midten verticalt(opp til ned)
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

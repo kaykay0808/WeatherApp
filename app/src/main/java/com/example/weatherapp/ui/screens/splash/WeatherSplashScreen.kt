@@ -1,4 +1,4 @@
-package com.example.weatherapp.ui.screens
+package com.example.weatherapp.ui.screens.splash
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
@@ -31,10 +31,10 @@ import com.example.weatherapp.navigation.WeatherScreens
 import kotlinx.coroutines.delay
 
 @Composable
-fun WeatherSplashScreen(navController: NavController) {
+fun WeatherSplashScreen(navController: NavController, scaleValue: Float = 0f) {
     // Animation
     val scale = remember {
-        Animatable(0f)
+        Animatable(scaleValue)
     }
 
     LaunchedEffect(key1 = true, block = {
@@ -54,8 +54,6 @@ fun WeatherSplashScreen(navController: NavController) {
         navController.navigate(WeatherScreens.MainScreen.name)
 
     })
-
-
     Surface(
         modifier = Modifier
             .padding(15.dp)
@@ -94,5 +92,8 @@ fun WeatherSplashScreen(navController: NavController) {
 @Composable
 fun WeatherSplashScreenPreview() {
     val navController = rememberNavController()
-    WeatherSplashScreen(navController = navController)
+    WeatherSplashScreen(
+        navController = navController,
+        scaleValue = 0.9f
+    )
 }

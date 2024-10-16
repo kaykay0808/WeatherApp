@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.weatherapp.ui.screens.MainScreen
-import com.example.weatherapp.ui.screens.WeatherSplashScreen
+import com.example.weatherapp.ui.screens.main.MainScreen
+import com.example.weatherapp.ui.screens.splash.WeatherSplashScreen
 
 // NavController that comes with jetpackCompose
 
