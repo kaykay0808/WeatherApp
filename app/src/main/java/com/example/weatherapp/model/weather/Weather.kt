@@ -1,9 +1,9 @@
-package com.example.weatherapp.model
+package com.example.weatherapp.model.weather
 
 data class Weather(
     val city: City,
     val cnt: Int,
     val cod: String,
-    val list: List<WeatherObject>,
+    val list: List<WeatherItem>,
     val message: Double
 )

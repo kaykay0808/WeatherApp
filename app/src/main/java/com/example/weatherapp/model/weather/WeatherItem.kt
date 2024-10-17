@@ -1,10 +1,10 @@
-package com.example.weatherapp.model
+package com.example.weatherapp.model.weather
 
-data class WeatherObject(
+data class WeatherItem(
     val clouds: Int,
     val deg: Int,
     val dt: Int,
-    val feels_like: FeelsLike,
+    val feelsLike: FeelsLike,
     val gust: Double,
     val humidity: Int,
     val pop: Double,
@@ -14,5 +14,5 @@ data class WeatherObject(
     val sunrise: Int,
     val sunset: Int,
     val temp: Temp,
-    val weather: List<WeatherX>
+    val weather: List<WeatherObject>
 )
