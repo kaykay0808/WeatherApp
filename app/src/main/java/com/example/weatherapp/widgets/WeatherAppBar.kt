@@ -33,7 +33,7 @@ fun WeatherTopAppBar(
     title: String = "Title",
     icon: ImageVector? = null,
     isMainScreen: Boolean = true,
-    elevation: Dp = 0.dp, // this wont work anymore
+    elevation: Dp = 0.dp,
     navController: NavController,
     onAddActionClicked: () -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior,

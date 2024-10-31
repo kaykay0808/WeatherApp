@@ -1,5 +1,5 @@
 [versions]
-agp = "8.6.1"
+agp = "8.7.1"
 kotlin = "2.0.20"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -21,7 +21,7 @@ roomVersion = "2.6.1"
 # Coil
 coilComposeVersion = "2.5.0"
 # Icon Extended
-materialIconsExtendedVersion = "1.7.3"
+materialIconsExtendedVersion = "1.7.4"
 # Coroutines
 coroutinesVersion = "1.8.1"
 lifecycleRuntimeKtx = "2.8.6"
