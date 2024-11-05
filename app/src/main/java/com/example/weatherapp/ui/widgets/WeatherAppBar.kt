@@ -1,4 +1,4 @@
-package com.example.weatherapp.widgets
+package com.example.weatherapp.ui.widgets
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
