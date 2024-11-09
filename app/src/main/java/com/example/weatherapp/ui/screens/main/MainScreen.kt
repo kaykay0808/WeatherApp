@@ -26,17 +26,20 @@ import com.example.weatherapp.component.SunsetRow
 import com.example.weatherapp.component.WeatherList
 import com.example.weatherapp.data.DataOrException
 import com.example.weatherapp.model.weather.Weather
+import com.example.weatherapp.navigation.WeatherScreens
 import com.example.weatherapp.ui.widgets.WeatherTopAppBar
 import com.example.weatherapp.utils.formatDate
 
 @Composable
 fun MainScreen(
     navController: NavController,
-    mainViewModel: MainViewModel = hiltViewModel()
+    mainViewModel: MainViewModel = hiltViewModel(),
+    city: String?
 ) {
+    Log.d("TheCity", "City: ${city}")
     val weatherData = produceState<DataOrException<Weather, Boolean, Exception>>(
         initialValue = DataOrException(loading = true)
-    ) { value = mainViewModel.getWeatherData(city = "Oslo") }.value
+    ) { value = mainViewModel.getWeatherData(city = city.toString()) }.value
 
     if (weatherData.loading == true) {
         CircularProgressIndicator()
@@ -65,6 +68,9 @@ fun MainScaffold(
                 title = weather.city.name + ", ${weather.city.country}",
                 // icon = Icons.AutoMirrored.Filled.ArrowBack,
                 navController = navController,
+                onAddActionClicked = {
+                    navController.navigate(WeatherScreens.SearchScreen.name)
+                },
                 scrollBehavior = scrollBehavior,
                 elevation = 4.dp
             ) {

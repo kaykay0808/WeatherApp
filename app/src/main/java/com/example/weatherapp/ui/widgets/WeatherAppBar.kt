@@ -61,7 +61,11 @@ fun WeatherTopAppBar(
                 // Checking if we are in the main screen to show some icons.
                 if (isMainScreen) {
                     // Create some icons?
-                    IconButton(onClick = {}) {
+                    IconButton(
+                        onClick = {
+                            onAddActionClicked.invoke()
+                        }
+                    ) {
                         Icon(imageVector = Icons.Default.Search, contentDescription = "Search Icon")
                     }
                     IconButton(onClick = {}) {
