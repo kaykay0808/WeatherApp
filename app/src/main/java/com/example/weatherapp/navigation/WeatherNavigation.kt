@@ -12,11 +12,11 @@ import com.example.weatherapp.ui.screens.main.MainViewModel
 import com.example.weatherapp.ui.screens.search.SearchScreen
 import com.example.weatherapp.ui.screens.splash.WeatherSplashScreen
 
-// NavController that comes with jetpackCompose
+// Todo: Migrating to the new way of passing arguments.
+
 
 @Composable
 fun WeatherNavigation() {
-
     val navController = rememberNavController()
     NavHost(
         navController = navController,

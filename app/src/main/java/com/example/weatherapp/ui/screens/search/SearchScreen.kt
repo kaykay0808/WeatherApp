@@ -90,16 +90,17 @@ fun SearchScreen(
 
 @Composable
 fun SearchBar(
-    modifier: Modifier = Modifier,
+    modifier: Modifier, // Move this down later to commonTextField
     searchQueryState: MutableState<String>,
     valid: Boolean,
-    keyboardController : SoftwareKeyboardController?,
+    keyboardController: SoftwareKeyboardController?,
     onSearch: (String) -> Unit = {}// The city name?
 ) {
     Column {
         CommonTextField(
+            modifier = modifier,
             valueState = searchQueryState,
-            placeholder = "Seattle",
+            placeholder = "Type a city",
             onAction = KeyboardActions {
                 // When we start typing
                 // Checking if what we typed in is valid (is not valid means it's empty)
@@ -117,14 +118,15 @@ fun SearchBar(
 
 @Composable
 fun CommonTextField(
+    modifier: Modifier = Modifier,
     valueState: MutableState<String>,
     placeholder: String,
     keyboardType: KeyboardType = KeyboardType.Text,
-    imeAction: ImeAction = ImeAction.Next,
+    imeAction: ImeAction = ImeAction.Search, // or Next?
     onAction: KeyboardActions = KeyboardActions.Default
 ) {
     OutlinedTextField(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(start = 10.dp, end = 10.dp),
         value = valueState.value,
