@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="about_app">Weather App V.0.1</string>
+    <string name="api_used">https://openweathermap.org</string>
+    <string name="author">Made by: Kay Ho</string>
 </resources>

@@ -7,9 +7,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.weatherapp.ui.screens.about.AboutScreen
+import com.example.weatherapp.ui.screens.favorites.FavoritesScreen
 import com.example.weatherapp.ui.screens.main.MainScreen
 import com.example.weatherapp.ui.screens.main.MainViewModel
 import com.example.weatherapp.ui.screens.search.SearchScreen
+import com.example.weatherapp.ui.screens.settings.SettingsScreen
 import com.example.weatherapp.ui.screens.splash.WeatherSplashScreen
 
 // Todo: Migrating to the new way of passing arguments.
@@ -25,7 +28,7 @@ fun WeatherNavigation() {
         composable(WeatherScreens.SplashScreen.name) {
             WeatherSplashScreen(navController = navController)
         }
-        // Want to get the mainScreen out of there
+
         val route = WeatherScreens.MainScreen.name
         //  www.google.com/cityname="seattle"
         composable(
@@ -47,8 +50,22 @@ fun WeatherNavigation() {
                 )
             }
         }
+
         composable(WeatherScreens.SearchScreen.name) {
             SearchScreen(navController = navController)
+        }
+        composable(WeatherScreens.AboutScreen.name) {
+            // Do something
+            AboutScreen(navController = navController)
+        }
+        composable(WeatherScreens.FavoriteScreen.name) {
+            // Do something
+            FavoritesScreen(navController = navController)
+
+        }
+        composable(WeatherScreens.SettingsScreen.name) {
+            SettingsScreen(navController = navController)
+
         }
     }
 }

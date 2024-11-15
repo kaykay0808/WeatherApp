@@ -1,6 +1,5 @@
 package com.example.weatherapp.ui.screens.search
 
-import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -36,7 +35,6 @@ import com.example.weatherapp.navigation.WeatherScreens
 import com.example.weatherapp.ui.widgets.WeatherTopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(
     navController: NavController
@@ -90,7 +88,7 @@ fun SearchScreen(
 
 @Composable
 fun SearchBar(
-    modifier: Modifier, // Move this down later to commonTextField
+    modifier: Modifier = Modifier, // Move this down later to commonTextField
     searchQueryState: MutableState<String>,
     valid: Boolean,
     keyboardController: SoftwareKeyboardController?,
