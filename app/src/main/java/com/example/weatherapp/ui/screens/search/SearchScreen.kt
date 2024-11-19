@@ -112,6 +112,7 @@ fun SearchBar(
             }
         )
     }
+    Log.d("ISVALID", "Valid is returning: $valid")
 }
 
 @Composable
