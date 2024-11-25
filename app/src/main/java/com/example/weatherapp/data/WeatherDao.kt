@@ -11,15 +11,15 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WeatherDao {
-    // Creating an item or updating an item (CRUID)
+    // Creating an item or updating an item (CRUD)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFavorite(weatherDataFavorite: Favorite)
+
     @Query("SELECT * FROM favorite_table")
     fun getFavorites(): Flow<List<Favorite>>
 
     @Query("SELECT * FROM favorite_table where city =:city")
     suspend fun getFavById(city: String): Favorite
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFavorite(weatherDataFavorite: Favorite)
 
     @Update
     suspend fun updateFavorite(weatherDataFavorite: Favorite)
