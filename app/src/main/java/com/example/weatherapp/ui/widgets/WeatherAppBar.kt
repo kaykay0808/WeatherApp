@@ -35,6 +35,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
@@ -42,17 +43,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.weatherapp.model.local.Favorite
 import com.example.weatherapp.navigation.WeatherScreens
+import com.example.weatherapp.ui.screens.favorites.FavoriteViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WeatherTopAppBar(
     title: String = "Title",
     icon: ImageVector? = null,
-    isMainScreen: Boolean = true,
+    isMainScreen: Boolean = true, // what to do
     elevation: Dp = 0.dp,
     navController: NavController,
+    favoriteViewModel: FavoriteViewModel = hiltViewModel(),
     onAddActionClicked: () -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior,
     onButtonClicked: () -> Unit = {}
@@ -115,6 +120,27 @@ fun WeatherTopAppBar(
                         modifier = Modifier.clickable {
                             onButtonClicked.invoke()
                         }
+                    )
+                }
+                if (isMainScreen) {
+                    Icon(
+                        imageVector = Icons.Default.Favorite,
+                        contentDescription = "Favorite icon",
+                        modifier = Modifier
+                            .scale(0.9f)
+                            .clickable {
+                                val dataList = title.split(",")
+                                // When clicked we want to insert the city and the country
+                                favoriteViewModel.insertFavorite(
+                                    // Favorite table
+                                    Favorite(
+                                        city = dataList[0], // city name
+                                        country = dataList[1] // country code
+                                    )
+                                )
+
+                            },
+                        tint = Color.Red.copy(alpha = 0.6f)
                     )
                 }
             },
