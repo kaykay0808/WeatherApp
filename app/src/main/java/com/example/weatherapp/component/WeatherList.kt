@@ -16,7 +16,8 @@ import com.example.weatherapp.model.weather.WeatherItem
 
 @Composable
 fun WeatherList(
-    modifier: Modifier = Modifier, items: List<WeatherItem>
+    modifier: Modifier = Modifier,
+    items: List<WeatherItem>
 ) {
     Surface(
         modifier = modifier
