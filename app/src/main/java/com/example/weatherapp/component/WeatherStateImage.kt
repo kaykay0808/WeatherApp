@@ -25,7 +25,7 @@ fun WeatherStateImage(
         contentDescription = "icon",
         contentScale = ContentScale.Crop,
         modifier = modifier
-            .size(100.dp),
+            .size(45.dp),
         //colorFilter = ColorFilter.tint(iconColor)
     )
 }

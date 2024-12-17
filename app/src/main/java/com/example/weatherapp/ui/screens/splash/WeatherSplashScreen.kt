@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -20,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +30,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.weatherapp.R
 import com.example.weatherapp.navigation.WeatherScreens
+import com.example.weatherapp.ui.theme.SplashIconBackgroundColor
+import com.example.weatherapp.ui.theme.SplashIconColor
 import kotlinx.coroutines.delay
 
 @Composable
@@ -61,7 +65,7 @@ fun WeatherSplashScreen(navController: NavController, scaleValue: Float = 0f) {
             .size(330.dp)
             .scale(scale.value),
         shape = CircleShape,
-        color = Color.White,
+        color = MaterialTheme.colorScheme.SplashIconBackgroundColor,
         border = BorderStroke(
             width = 2.dp,
             color = Color.LightGray
@@ -78,6 +82,7 @@ fun WeatherSplashScreen(navController: NavController, scaleValue: Float = 0f) {
                     .size(95.dp),
                 contentScale = ContentScale.Fit,
                 painter = painterResource(id = R.drawable.sun),
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.SplashIconColor),
                 contentDescription = "Sun icon"
             )
             Text(

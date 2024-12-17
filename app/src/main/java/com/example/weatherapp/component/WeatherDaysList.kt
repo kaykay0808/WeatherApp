@@ -7,15 +7,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.weatherapp.model.weather.WeatherItem
+import com.example.weatherapp.data.model.weather.WeatherItem
+import com.example.weatherapp.ui.theme.mainScreenDaysBackgroundColor
 
 @Composable
-fun WeatherList(
+fun WeatherDaysList(
     modifier: Modifier = Modifier,
     items: List<WeatherItem>
 ) {
@@ -23,7 +24,7 @@ fun WeatherList(
         modifier = modifier
             .fillMaxWidth()
             .fillMaxHeight(),
-        color = Color(0xFFEEF1EF),
+        color = MaterialTheme.colorScheme.mainScreenDaysBackgroundColor,
         shape = RoundedCornerShape(14.dp)
     ) {
         LazyColumn(

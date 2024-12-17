@@ -18,7 +18,9 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import com.example.weatherapp.model.weather.WeatherItem
+import com.example.weatherapp.data.model.weather.WeatherItem
+import com.example.weatherapp.ui.theme.mainScreenDaysRowColor
+import com.example.weatherapp.ui.theme.mainScreenDescriptionBackground
 import com.example.weatherapp.utils.formatDate
 import com.example.weatherapp.utils.formatDecimals
 
@@ -33,7 +35,7 @@ fun WeatherDetailsRow(
             .padding(3.dp)
             .fillMaxWidth(),
         shape = CircleShape.copy(topEnd = CornerSize(6.dp)),
-        color = Color.White
+        color = MaterialTheme.colorScheme.mainScreenDaysRowColor
     ) {
         Row(
             modifier = modifier
@@ -51,7 +53,7 @@ fun WeatherDetailsRow(
                 modifier = Modifier
                     .padding(0.dp),
                 shape = CircleShape,
-                color = Color(0xFFFFC400)
+                color = MaterialTheme.colorScheme.mainScreenDescriptionBackground
             ) {
                 Text(
                     weather.weather[0].description,

@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.weatherapp.R
-import com.example.weatherapp.model.weather.WeatherItem
+import com.example.weatherapp.data.model.weather.WeatherItem
 import com.example.weatherapp.utils.formatDateTime
 
 @Composable

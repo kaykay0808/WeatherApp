@@ -23,9 +23,9 @@ import androidx.navigation.NavController
 import com.example.weatherapp.component.CircleInfo
 import com.example.weatherapp.component.HumidityWindPressureRow
 import com.example.weatherapp.component.SunsetRow
-import com.example.weatherapp.component.WeatherList
+import com.example.weatherapp.component.WeatherDaysList
 import com.example.weatherapp.data.DataOrException
-import com.example.weatherapp.model.weather.Weather
+import com.example.weatherapp.data.model.weather.Weather
 import com.example.weatherapp.navigation.WeatherScreens
 import com.example.weatherapp.ui.widgets.WeatherTopAppBar
 import com.example.weatherapp.utils.formatDate
@@ -128,6 +128,6 @@ fun MainContent(
             color = MaterialTheme.colorScheme.primary,
             fontWeight = FontWeight.Bold
         )
-        WeatherList(items = data.list)
+        WeatherDaysList(items = data.list)
     }
 }
