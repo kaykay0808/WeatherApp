@@ -44,6 +44,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -63,9 +64,9 @@ fun WeatherTopAppBar(
     elevation: Dp = 0.dp,
     navController: NavController,
     favoriteViewModel: FavoriteViewModel = hiltViewModel(),
-    onAddActionClicked: () -> Unit = {},
+    onSearchActionClicked: () -> Unit = {}, // A callback function (onAddActionClicked)
     scrollBehavior: TopAppBarScrollBehavior,
-    onButtonClicked: () -> Unit = {}
+    onButtonClicked: () -> Unit = {} // This could be any button
 ) {
     val showDialog = remember {
         mutableStateOf(false)
@@ -98,17 +99,19 @@ fun WeatherTopAppBar(
 
                 )
             },
+            // Defines the actions in the appbar (Icons)
             actions = {
                 // Checking if we are in the main screen to show some icons.
                 if (isMainScreen) {
-                    // Create some icons?
+                    // Search Icon
                     IconButton(
                         onClick = {
-                            onAddActionClicked.invoke()
+                            onSearchActionClicked.invoke()
                         }
                     ) {
                         Icon(imageVector = Icons.Default.Search, contentDescription = "Search Icon")
                     }
+                    // Dots Icon
                     IconButton(
                         onClick = {
                             showDialog.value = true
@@ -139,25 +142,28 @@ fun WeatherTopAppBar(
                             // if it's a match filter will return an array list?
                         }
                     if (isAlreadyFav.isEmpty()) {
+                        // A heart icon that we make clickable
                         Icon(
-                            imageVector = Icons.Default.Favorite,
+                            imageVector = Icons.Default.Favorite, // or FavoriteBorder
                             contentDescription = "Favorite icon",
+                            tint = Color.Red.copy(alpha = 0.6f),
                             modifier = Modifier
                                 .scale(0.9f)
                                 .clickable {
                                     val dataList = title.split(",")
                                     // When clicked we want to insert the city and the country
-                                    favoriteViewModel.insertFavorite(
-                                        // Favorite table
-                                        Favorite(
-                                            city = dataList[0], // city name
-                                            country = dataList[1] // country code
+                                    favoriteViewModel
+                                        .insertFavorite(
+                                            // Favorite table
+                                            Favorite(
+                                                city = dataList[0], // city name
+                                                country = dataList[1] // country code
+                                            )
                                         )
-                                    ).run {
-                                        showIt.value = true
-                                    }
-                                },
-                            tint = Color.Red.copy(alpha = 0.6f)
+                                        .run {
+                                            showIt.value = true
+                                        }
+                                }
                         )
                     } else {
                         showIt.value = false
@@ -257,4 +263,10 @@ fun ShowSettingDropDownMenu(
             }
         }
     }
+}
+
+@Composable
+@Preview
+fun TopAppBarPreview() {
+    // Something
 }

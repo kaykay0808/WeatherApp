@@ -10,12 +10,14 @@ import javax.inject.Singleton
 @Singleton
 interface WeatherApi {
     // retrofit: fetch data
-    @GET(value = "data/2.5/forecast/daily")
+    @GET(value = "data/2.5/forecast/daily") // This is the endpoint (Route)
+    // The function need to receive something
     suspend fun getWeather(
-        @Query("q") query: String, // query is the city we are searching
+        @Query("q") query: String, // query is the city we are searching (q=lisbon)
         @Query("units") units: String = "metric", // imperial
         @Query("appid") appid: String = API_KEY
     ): Weather
+    // @PUT @UPDATE @DELETE
 }
 
 // https://api.openweathermap.org/data/2.5/forecast/daily?q=lisbon&appid=ed60fcfbd110ee65c7150605ea8aceea&units=imperial

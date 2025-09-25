@@ -64,11 +64,12 @@ fun MainScaffold(
         TopAppBarDefaults.enterAlwaysScrollBehavior()// pinnedScrollBehavior()  // exitUntilCollapsedScrollBehavior
     Scaffold(
         topBar = {
+            // Our custom appBar
             WeatherTopAppBar(
                 title = weather.city.name + ", ${weather.city.country}",
                 // icon = Icons.AutoMirrored.Filled.ArrowBack,
                 navController = navController,
-                onAddActionClicked = {
+                onSearchActionClicked = {
                     navController.navigate(WeatherScreens.SearchScreen.name)
                 },
                 scrollBehavior = scrollBehavior,

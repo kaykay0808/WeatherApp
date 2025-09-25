@@ -1,30 +1,30 @@
 [versions]
-agp = "8.7.2"
-kotlin = "2.0.20"
-coreKtx = "1.15.0"
+agp = "8.12.3"
+kotlin = "2.2.20"
+coreKtx = "1.17.0"
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-activityCompose = "1.9.3"
-composeBom = "2024.10.01"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+activityCompose = "1.11.0"
+composeBom = "2025.09.01"
 # Extended:
 # Dagger/Hilt
-kspVersion = "2.0.20-1.0.24"
-hiltVersion = "2.50"
-hiltNavigationVersion = "1.2.0"
+kspVersion = "2.2.20-2.0.3"
+hiltVersion = "2.57.1"
+hiltNavigationVersion = "1.3.0"
 # Retrofit
-retrofitVersion = "2.11.0"
+retrofitVersion = "3.0.0"
 # OkHttp
-okHttpVersion = "4.12.0"
+okHttpVersion = "5.1.0"
 # Room
-roomVersion = "2.6.1"
+roomVersion = "2.8.1"
 # Coil
-coilComposeVersion = "2.5.0"
+coilComposeVersion = "2.7.0"
 # Icon Extended
-materialIconsExtendedVersion = "1.7.5"
+materialIconsExtendedVersion = "1.7.8"
 # Coroutines
-coroutinesVersion = "1.8.1"
-lifecycleRuntimeKtx = "2.8.7"
+coroutinesVersion = "1.10.2"
+lifecycleRuntimeKtx = "2.9.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
