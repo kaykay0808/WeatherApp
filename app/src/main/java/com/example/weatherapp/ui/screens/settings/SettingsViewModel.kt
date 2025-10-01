@@ -3,7 +3,7 @@ package com.example.weatherapp.ui.screens.settings
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weatherapp.data.model.weather.TemperatureUnitSetting
+import com.example.weatherapp.data.model.local.TemperatureUnitSetting
 import com.example.weatherapp.repository.WeatherDbRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

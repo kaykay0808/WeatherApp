@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.weatherapp.data.model.local.Favorite
-import com.example.weatherapp.data.model.weather.TemperatureUnitSetting
+import com.example.weatherapp.data.model.local.TemperatureUnitSetting
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -2,7 +2,7 @@ package com.example.weatherapp.repository
 
 import com.example.weatherapp.data.WeatherDao
 import com.example.weatherapp.data.model.local.Favorite
-import com.example.weatherapp.data.model.weather.TemperatureUnitSetting
+import com.example.weatherapp.data.model.local.TemperatureUnitSetting
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
