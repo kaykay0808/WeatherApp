@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.weatherapp.data.model.local.Favorite
+import com.example.weatherapp.data.model.weather.TemperatureUnitSetting
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -29,5 +30,21 @@ interface WeatherDao {
 
     @Delete
     suspend fun deleteFavorite(weatherDataFavorite: Favorite)
+
+    // Unit table
+    @Query("SELECT * FROM settings_tbl")
+    fun getUnits(): Flow<List<TemperatureUnitSetting>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertUnit(unit: TemperatureUnitSetting)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateUnit(unit: TemperatureUnitSetting)
+
+    @Query("DELETE FROM settings_tbl")
+    suspend fun deleteAllUnits()
+
+    @Delete
+    suspend fun deleteUnit(unit: TemperatureUnitSetting)
 
 }
