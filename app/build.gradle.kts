@@ -65,6 +65,7 @@ dependencies {
 
     // Dagger/Hilt
     implementation(libs.hilt.android)
+    implementation(libs.ui)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation)
 

@@ -13,7 +13,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -27,6 +32,7 @@ import com.example.weatherapp.component.WeatherDaysList
 import com.example.weatherapp.data.DataOrException
 import com.example.weatherapp.data.model.weather.Weather
 import com.example.weatherapp.navigation.WeatherScreens
+import com.example.weatherapp.ui.screens.settings.SettingsViewModel
 import com.example.weatherapp.ui.widgets.WeatherTopAppBar
 import com.example.weatherapp.utils.formatDate
 
@@ -34,23 +40,38 @@ import com.example.weatherapp.utils.formatDate
 fun MainScreen(
     navController: NavController,
     mainViewModel: MainViewModel = hiltViewModel(),
+    settingsViewModel: SettingsViewModel = hiltViewModel(),
     city: String?
 ) {
     Log.d("TheCity", "City: ${city}")
-    val weatherData = produceState<DataOrException<Weather, Boolean, Exception>>(
-        initialValue = DataOrException(loading = true)
-    ) { value = mainViewModel.getWeatherData(city = city.toString()) }.value
+    val curCity: String = if (city!!.isBlank()) "Lisbon" else city
+    val unitFromDb = settingsViewModel.unitList.collectAsState().value // From settings viewmodel will change this
+    var unit by remember { mutableStateOf("imperial") } // from settings viewmodel will change this
+    var isImperial by remember { mutableStateOf(false) }
 
-    if (weatherData.loading == true) {
-        CircularProgressIndicator()
-    } else if (weatherData.data != null) {
-        // Text(text = "MainScreen ${weatherData.data!!.city.country}")
-        // To get the whole payload
-        // Text(text = "MainScreen ${weatherData.data}")
-        MainScaffold(
-            weather = weatherData.data!!,
-            navController = navController
-        )
+    if (!unitFromDb.isNullOrEmpty()) {
+
+        unit = unitFromDb[0].unit.split(" ")[0].lowercase()
+        isImperial= unit == "imperial"
+        val weatherData = produceState<DataOrException<Weather, Boolean, Exception>>(
+            initialValue = DataOrException(loading = true)
+        ) { value = mainViewModel.getWeatherData(
+            city = curCity,
+            units = unit
+        ) }.value
+
+        if (weatherData.loading == true) {
+            CircularProgressIndicator()
+        } else if (weatherData.data != null) {
+            // Text(text = "MainScreen ${weatherData.data!!.city.country}")
+            // To get the whole payload
+            // Text(text = "MainScreen ${weatherData.data}")
+            MainScaffold(
+                weather = weatherData.data!!,
+                isImperial = isImperial,
+                navController = navController
+            )
+        }
     }
 }
 
@@ -58,6 +79,7 @@ fun MainScreen(
 @Composable
 fun MainScaffold(
     weather: Weather,
+    isImperial: Boolean,
     navController: NavController
 ) {
     val scrollBehavior =
@@ -81,6 +103,7 @@ fun MainScaffold(
         content = { paddingValues ->
             MainContent(
                 data = weather,
+                isImperial = isImperial,
                 modifier = Modifier.padding(paddingValues)
             )
         }
@@ -90,6 +113,7 @@ fun MainScaffold(
 @Composable
 fun MainContent(
     data: Weather,
+    isImperial: Boolean,
     modifier: Modifier = Modifier
 ) {
     val weatherItem = data.list[0]
@@ -120,7 +144,10 @@ fun MainContent(
             weatherItem = weatherItem,
             // data = data
         )
-        HumidityWindPressureRow(weatherItem = weatherItem)
+        HumidityWindPressureRow(
+            weatherItem = weatherItem,
+            isImperial = isImperial
+        )
         HorizontalDivider()
         SunsetRow(weatherItem = weatherItem)
         Text(

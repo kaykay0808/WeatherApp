@@ -25,7 +25,7 @@ import com.example.weatherapp.ui.widgets.WeatherTopAppBar
 @Composable
 fun FavoritesScreen(
     navController: NavController,
-    favoriteViewModel: FavoriteViewModel = hiltViewModel()
+    favoriteViewModel: FavoriteViewModel
 ) {
     val scrollBehavior =
         TopAppBarDefaults.enterAlwaysScrollBehavior()

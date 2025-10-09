@@ -3,10 +3,10 @@ package com.example.weatherapp.data
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.weatherapp.data.model.local.Favorite
-import com.example.weatherapp.data.model.local.TemperatureUnitSetting
+import com.example.weatherapp.data.model.local.UnitSetting
 
 @Database(
-    entities = [Favorite::class, TemperatureUnitSetting::class],
+    entities = [Favorite::class, UnitSetting::class],
     version = 2,
     exportSchema = false
 )

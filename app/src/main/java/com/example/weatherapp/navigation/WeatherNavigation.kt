@@ -1,18 +1,20 @@
 package com.example.weatherapp.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.weatherapp.ui.screens.about.AboutScreen
+import com.example.weatherapp.ui.screens.favorites.FavoriteViewModel
 import com.example.weatherapp.ui.screens.favorites.FavoritesScreen
 import com.example.weatherapp.ui.screens.main.MainScreen
 import com.example.weatherapp.ui.screens.main.MainViewModel
 import com.example.weatherapp.ui.screens.search.SearchScreen
 import com.example.weatherapp.ui.screens.settings.SettingsScreen
+import com.example.weatherapp.ui.screens.settings.SettingsViewModel
 import com.example.weatherapp.ui.screens.splash.WeatherSplashScreen
 
 // Todo: Migrating to the new way of passing arguments.
@@ -28,14 +30,13 @@ fun WeatherNavigation() {
         composable(WeatherScreens.SplashScreen.name) {
             WeatherSplashScreen(navController = navController)
         }
-
         val route = WeatherScreens.MainScreen.name
         //  www.google.com/cityname="seattle"
         composable(
-        /*WeatherScreens.MainScreen.name*/
+            /*WeatherScreens.MainScreen.name*/
             route = "$route/{city}",
             arguments = listOf(
-                navArgument(name ="city") {
+                navArgument(name = "city") {
                     type = NavType.StringType
                 }
             )
@@ -59,13 +60,18 @@ fun WeatherNavigation() {
             AboutScreen(navController = navController)
         }
         composable(WeatherScreens.FavoriteScreen.name) {
-            // Do something
-            FavoritesScreen(navController = navController)
-
+            val favoriteViewModel = hiltViewModel<FavoriteViewModel>()
+            FavoritesScreen(
+                navController = navController,
+                favoriteViewModel = favoriteViewModel
+            )
         }
         composable(WeatherScreens.SettingsScreen.name) {
-            SettingsScreen(navController = navController)
-
+            val settingsViewModel = hiltViewModel<SettingsViewModel>()
+            SettingsScreen(
+                navController = navController,
+                settingsViewModel = settingsViewModel
+            )
         }
     }
 }

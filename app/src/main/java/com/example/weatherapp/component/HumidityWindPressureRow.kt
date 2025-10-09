@@ -15,9 +15,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.weatherapp.R
 import com.example.weatherapp.data.model.weather.WeatherItem
+import com.example.weatherapp.utils.formatDecimals
 
 @Composable
-fun HumidityWindPressureRow(weatherItem: WeatherItem) {
+fun HumidityWindPressureRow(
+    weatherItem: WeatherItem,
+    isImperial: Boolean
+) {
     Row(
         modifier = Modifier
             .padding(12.dp)
@@ -67,7 +71,7 @@ fun HumidityWindPressureRow(weatherItem: WeatherItem) {
                 modifier = Modifier.size(20.dp)
             )
             Text(
-                text = "${weatherItem.humidity} mph",
+                text = "${formatDecimals(weatherItem.speed)} " + if (isImperial) "mph" else "m/s", // mph or m/s
                 style = MaterialTheme.typography.bodySmall
             )
         }
